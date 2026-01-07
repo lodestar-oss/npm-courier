@@ -10,7 +10,7 @@ export function safeRequestConstructor(
   { url, options }: RequestConstructorInput,
   context: Record<string, any>
 ): Result<
-  { output: Request; newContext: Record<string, any> },
+  { data: Request; newContext: Record<string, any> },
   { error: Error; newContext: Record<string, any> }
 > {
   const newContext = {
@@ -27,7 +27,7 @@ export function safeRequestConstructor(
     Object.assign(newContext.safeRequestConstructor, {
       success: true,
     });
-    return ok({ output: request, newContext });
+    return ok({ data: request, newContext });
   } catch (error) {
     Object.assign(newContext.safeRequestConstructor, {
       success: false,

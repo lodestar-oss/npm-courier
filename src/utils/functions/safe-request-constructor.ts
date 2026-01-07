@@ -1,3 +1,4 @@
+import { formatError } from "@/utils/functions/format-error";
 import { err, ok, type Result } from "neverthrow";
 
 interface RequestConstructorInput {
@@ -30,7 +31,7 @@ export function safeRequestConstructor(
   } catch (error) {
     Object.assign(newContext.safeRequestConstructor, {
       success: false,
-      error,
+      error: formatError(error as Error),
     });
     return err({ error: error as Error, newContext });
   }

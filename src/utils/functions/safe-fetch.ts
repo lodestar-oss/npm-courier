@@ -1,6 +1,6 @@
 import { err, ok, Result } from "neverthrow";
 
-interface SafeFetchInput {
+export interface SafeFetchInput {
   url: string;
   options?: RequestInit;
 }

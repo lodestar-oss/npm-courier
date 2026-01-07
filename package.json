@@ -2,6 +2,7 @@
   "name": "npm-courier",
   "type": "module",
   "scripts": {
+    "start": "bun run src/index.ts",
     "check-types": "bunx tsc --noEmit",
     "format": "bunx prettier . --write",
     "format:check": "bunx prettier . --check"
@@ -12,5 +13,8 @@
     "prettier": "3.7.4",
     "prettier-plugin-curly": "0.4.1",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "zod": "^4.3.5"
   }
 }

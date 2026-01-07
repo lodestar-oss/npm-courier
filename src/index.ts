@@ -13,14 +13,16 @@ async function getPackageMetadata({
   name: string;
   format: "abbreviated" | "full";
 }) {
+  const acceptHeader =
+    format === "abbreviated"
+      ? ABBREVIATED_METADATA_ACCEPT_HEADER
+      : "application/json";
+
   const fetchResult = await safeFetch({
     url: `${NPM_REGISTRY_URL}/${name}`,
     options: {
       headers: {
-        Accept:
-          format === "abbreviated"
-            ? ABBREVIATED_METADATA_ACCEPT_HEADER
-            : "application/json",
+        Accept: acceptHeader,
       },
     },
   });

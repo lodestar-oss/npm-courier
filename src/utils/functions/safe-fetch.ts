@@ -1,12 +1,14 @@
 import { err, ok, Result } from "neverthrow";
 
+interface SafeFetchInput {
+  url: string;
+  options?: RequestInit;
+}
+
 export async function safeFetch({
   url,
   options,
-}: {
-  url: string;
-  options?: RequestInit;
-}): Promise<Result<Response, Error>> {
+}: SafeFetchInput): Promise<Result<Response, Error>> {
   try {
     const request = new Request(url, options);
     const response = await fetch(request);

@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "start": "bun run src/index.ts",
+    "try": "bun run tests/try.ts",
     "check-types": "bunx tsc --noEmit",
     "format": "bunx prettier . --write",
     "format:check": "bunx prettier . --check"

@@ -1,3 +1,5 @@
+import { AbbreviatedMetadataSchema } from "@/schemas/abbreviated/metadata";
+import { FullMetadataSchema } from "@/schemas/full/metadata";
 import {
   ABBREVIATED_METADATA_ACCEPT_HEADER,
   NPM_REGISTRY_URL,
@@ -25,5 +27,14 @@ export async function getPackageMetadata({
     return { success: false, error: getJsonResult.error };
   }
 
-  return { success: true, data: getJsonResult.value };
+  const validationResult =
+    format === "abbreviated"
+      ? AbbreviatedMetadataSchema.safeParse(getJsonResult.value)
+      : FullMetadataSchema.safeParse(getJsonResult.value);
+
+  if (!validationResult.success) {
+    return { success: false, error: validationResult.error };
+  }
+
+  return { success: true, data: validationResult.data };
 }

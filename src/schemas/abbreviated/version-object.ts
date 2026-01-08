@@ -22,7 +22,7 @@ export const AbbreviatedVersionObjectSchema = z.object({
   peerDependenciesMeta: z
     .record(z.string(), z.object({ optional: z.boolean() }))
     .optional(),
-  bin: OptionalRecordSchema,
+  bin: z.union([z.record(z.string(), z.string()), z.string()]).optional(),
   directories: OptionalRecordSchema,
   engines: z
     .union([z.record(z.string(), z.string()), z.array(z.string())])

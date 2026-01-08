@@ -7,7 +7,8 @@
     "check-types": "bunx tsc --noEmit",
     "format": "bunx prettier . --write",
     "format:check": "bunx prettier . --check",
-    "test:schemas": "bun test tests/schemas.test.ts"
+    "test:schemas": "bun test tests/schemas.test.ts",
+    "test:scoped-packages": "bun test tests/scoped-packages.test.ts"
   },
   "devDependencies": {
     "@types/bun": "^1.3.5",

@@ -8,7 +8,8 @@ export const FullMetadataSchema = z.object({
   _rev: z.string(),
   "dist-tags": z.record(z.string(), z.string()),
   time: z.record(z.string(), z.string()),
-  users: z.record(z.string(), z.string()).optional(),
+  name: z.string(),
+  users: z.record(z.string(), z.boolean()).optional(),
   versions: z.record(z.string(), FullVersionObjectSchema),
   author: HumanObjectSchema.optional(),
   bugs: z

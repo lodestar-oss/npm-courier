@@ -1,4 +1,5 @@
 import { AbbreviatedVersionObjectSchema } from "@/schemas/abbreviated/version-object";
+import { HumanObjectSchema } from "@/schemas/components/human-object";
 import * as z from "zod";
 
 export const FullVersionObjectSchema = z.looseObject({
@@ -6,10 +7,10 @@ export const FullVersionObjectSchema = z.looseObject({
     hasInstallScript: true,
   }).shape,
   _id: z.string(),
-  _nodeVersion: z.string(),
-  _npmUser: z.string(),
-  _npmVersion: z.string(),
-  main: z.string(),
+  _nodeVersion: z.string().optional(),
+  _npmUser: HumanObjectSchema.optional(),
+  _npmVersion: z.string().optional(),
+  main: z.string().optional(),
 });
 
 export type FullVersionObject = z.infer<typeof FullVersionObjectSchema>;

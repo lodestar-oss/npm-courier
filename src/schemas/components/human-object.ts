@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-export const HumanObjectSchema = z.object({
+export const HumanObjectSchema = z.looseObject({
   name: z.string().optional(),
   email: z.string().optional(),
   url: z.string().optional(),

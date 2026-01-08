@@ -12,19 +12,21 @@ export const AbbreviatedVersionObjectSchema = z.object({
   name: z.string(),
   version: z.string(),
   dist: DistObjectSchema,
-  deprecated: z.string().optional(),
+  deprecated: z.union([z.string(), z.boolean()]).optional(),
   dependencies: OptionalRecordSchema,
   acceptDependencies: OptionalRecordSchema,
   optionalDependencies: OptionalRecordSchema,
   devDependencies: OptionalRecordSchema,
-  bundleDependencies: z.array(z.string()).optional(),
+  bundleDependencies: z.union([z.array(z.string()), z.boolean()]).optional(),
   peerDependencies: OptionalRecordSchema,
   peerDependenciesMeta: z
     .record(z.string(), z.object({ optional: z.boolean() }))
     .optional(),
   bin: OptionalRecordSchema,
   directories: OptionalRecordSchema,
-  engines: OptionalRecordSchema,
+  engines: z
+    .union([z.record(z.string(), z.string()), z.array(z.string())])
+    .optional(),
   _hasShrinkwrap: z.boolean().optional(),
   hasInstallScript: z.boolean().optional(),
   funding: z

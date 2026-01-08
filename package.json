@@ -6,7 +6,8 @@
     "try": "bun run tests/try.ts",
     "check-types": "bunx tsc --noEmit",
     "format": "bunx prettier . --write",
-    "format:check": "bunx prettier . --check"
+    "format:check": "bunx prettier . --check",
+    "test:schemas": "bun test tests/schemas.test.ts"
   },
   "devDependencies": {
     "@types/bun": "^1.3.5",

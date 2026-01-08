@@ -1,6 +1,6 @@
 import { safeFetch, type SafeFetchInput } from "@/utils/functions/safe-fetch";
 import { safeJsonResponse } from "@/utils/functions/safe-json-response";
-import type { Result } from "neverthrow";
+import { err, type Result } from "neverthrow";
 
 export async function getJsonResponse({
   url,
@@ -12,7 +12,15 @@ export async function getJsonResponse({
     return fetchResult;
   }
 
-  const jsonResult = await safeJsonResponse(fetchResult.value);
+  const response = fetchResult.value;
+
+  if (!response.ok) {
+    return err(
+      new Error(`HTTP Error ${response.status}: ${response.statusText}`)
+    );
+  }
+
+  const jsonResult = await safeJsonResponse(response);
 
   return jsonResult;
 }

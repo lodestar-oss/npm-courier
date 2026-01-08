@@ -44,11 +44,10 @@ describe("Abbreviated metadata schema", () => {
         `tests/logs/schemas/abbreviated/${packageName}.txt`,
         prettifyError(validationResult.error)
       );
-    } else {
-      expect(validationResult.data).toStrictEqual(metadata);
     }
 
     expect(validationResult.success).toBe(true);
+    expect(validationResult.data).toStrictEqual(metadata);
   });
 });
 
@@ -75,10 +74,9 @@ describe("Full metadata schema", () => {
         `tests/logs/schemas/full/${packageName}.txt`,
         prettifyError(validationResult.error)
       );
-    } else {
-      expect(validationResult.data).toStrictEqual(metadata);
     }
 
     expect(validationResult.success).toBe(true);
+    expect(validationResult.data).toStrictEqual(metadata);
   });
 });

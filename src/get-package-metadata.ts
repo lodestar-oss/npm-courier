@@ -19,7 +19,7 @@ export async function getPackageMetadata({
       : "application/json";
 
   const getJsonResult = await getJsonResponse({
-    url: `${NPM_REGISTRY_URL}/${name}`,
+    url: `${NPM_REGISTRY_URL}/${encodeURIComponent(name)}`,
     options: { headers: { Accept: acceptHeader } },
   });
 
